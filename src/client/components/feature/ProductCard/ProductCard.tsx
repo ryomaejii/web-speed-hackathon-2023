@@ -21,7 +21,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
   const price = activeOffer?.price ?? product.price;
 
   return (
-    <Anchor href={`/product/${product.id}`}>
+    <Anchor to={`/product/${product.id}`}>
       <div className={styles.inner()}>
         {thumbnailFile ? (
           <div className={styles.image()}>

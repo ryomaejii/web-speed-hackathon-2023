@@ -41,7 +41,7 @@ export const CartItem: FC<Props> = ({ item, onRemove, onUpdate }) => {
             })}
           >
             <div className={styles.item()}>
-              <Anchor href={`/product/${item.product.id}`}>
+              <Anchor to={`/product/${item.product.id}`}>
                 <div className={styles.itemInner()}>
                   {thumbnailFile ? (
                     <div
