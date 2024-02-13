@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { lazy, Suspense } from 'react';
-import * as Router from 'react-router-dom';
+import { Route, Routes as ReactRouterRoutes } from 'react-router-dom';
 
 const NotFound = lazy(() => import('../../../pages/NotFound'));
 const Order = lazy(() => import('../../../pages/Order'));
@@ -15,13 +15,13 @@ export const Routes: FC = () => {
 
   return (
     <Suspense>
-      <Router.Routes>
-        <Router.Route element={<Top />} path="/" />
-        <Router.Route element={<ProductDetail />} path="/product/:productId" />
-        <Router.Route element={<Order />} path="/order" />
-        <Router.Route element={<OrderComplete />} path="/order/complete" />
-        <Router.Route element={<NotFound />} path="*" />
-      </Router.Routes>
+      <ReactRouterRoutes>
+        <Route element={<Top />} path="/" />
+        <Route element={<ProductDetail />} path="/product/:productId" />
+        <Route element={<Order />} path="/order" />
+        <Route element={<OrderComplete />} path="/order/complete" />
+        <Route element={<NotFound />} path="*" />
+      </ReactRouterRoutes>
     </Suspense>
   );
 };
