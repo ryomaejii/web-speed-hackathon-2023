@@ -4,7 +4,6 @@ import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { useAuthUser } from '../../../hooks/useAuthUser';
 import { useOpenModal } from '../../../store/modal';
 import { Anchor } from '../../foundation/Anchor';
-import { Image } from '../../foundation/Image';
 
 import * as styles from './Header.styles';
 
@@ -15,9 +14,7 @@ export const Header: FC = () => {
   return (
     <header className={styles.container()}>
       <Anchor to="/">
-        <div className={styles.logo()}>
-          <Image src="/icons/logo.svg" />
-        </div>
+        <img alt="logo" height={32} src="/icons/logo.svg" width={205} />
       </Anchor>
       {isAuthUser ? (
         <Anchor data-testid="navigate-order" to={'/order'}>

@@ -3,7 +3,6 @@ import type { FC } from 'react';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import { Anchor } from '../../foundation/Anchor';
-import { AspectRatio } from '../../foundation/AspectRatio';
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
 import { WidthRestriction } from '../../foundation/WidthRestriction';
 
@@ -24,9 +23,7 @@ export const ProductHeroImage: FC<Props> = ({ product, title }) => {
           <WidthRestriction>
             <Anchor to={`/product/${product?.id}`}>
               <div className={styles.container()}>
-                <AspectRatio ratioHeight={9} ratioWidth={16}>
-                  <img className={styles.image()} src={thumbnailFile?.filename} />
-                </AspectRatio>
+                <img className={styles.image()} src={thumbnailFile?.filename} />
 
                 <div className={styles.overlay()}>
                   <p
@@ -43,7 +40,7 @@ export const ProductHeroImage: FC<Props> = ({ product, title }) => {
                       [styles.description__mobile()]: deviceType === DeviceType.MOBILE,
                     })}
                   >
-                    {product?.name}
+                    {product?.name ?? '商品名'}
                   </p>
                 </div>
               </div>

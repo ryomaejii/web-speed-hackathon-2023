@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { Layout } from '../../components/application/Layout';
-import { ProductList } from '../../components/feature/ProductList';
+import { ProductList, ProductListSkelton } from '../../components/feature/ProductList';
 import { ProductHeroImage } from '../../components/product/ProductHeroImage';
 import { useFeatures } from '../../hooks/useFeatures';
 import { useRecommendation } from '../../hooks/useRecommendation';
@@ -23,14 +23,21 @@ export const Top: FC = () => {
           <ProductHeroImage product={recommendation?.product} title="今週のオススメ" />
 
           <div className={styles.featureList()}>
-            {features?.map((featureSection) => {
-              return (
-                <div key={featureSection.id} className={styles.feature()}>
-                  <h2 className={styles.featureHeading()}>{featureSection.title}</h2>
-                  <ProductList featureSection={featureSection} />
-                </div>
-              );
-            })}
+            {features
+              ? features.map((featureSection) => {
+                  return (
+                    <div key={featureSection.id} className={styles.feature()}>
+                      <h2 className={styles.featureHeading()}>{featureSection.title}</h2>
+                      <ProductList featureSection={featureSection} />
+                    </div>
+                  );
+                })
+              : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
+                  <div key={index} className={styles.feature()}>
+                    <h2 className={styles.featureHeading()}>タイトル</h2>
+                    <ProductListSkelton />
+                  </div>
+                ))}
           </div>
         </div>
       </Layout>

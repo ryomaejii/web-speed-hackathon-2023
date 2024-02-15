@@ -25,3 +25,36 @@ export const ProductList: FC<Props> = ({ featureSection }) => {
     </GetDeviceType>
   );
 };
+
+export const ProductListSkelton: FC = () => {
+  return (
+    <GetDeviceType>
+      {({ deviceType }) => {
+        switch (deviceType) {
+          case DeviceType.DESKTOP: {
+            return (
+              <div
+                style={{
+                  backgroundColor: '#bbb',
+                  height: '206px',
+                  width: '100%',
+                }}
+              />
+            );
+          }
+          case DeviceType.MOBILE: {
+            return (
+              <div
+                style={{
+                  backgroundColor: '#bbb',
+                  height: '240px',
+                  width: '100%',
+                }}
+              />
+            );
+          }
+        }
+      }}
+    </GetDeviceType>
+  );
+};
