@@ -55,16 +55,16 @@ export const ProductFragment = gql`
     name
     price
     description
-    media {
-      ...ProductMediaFragment
-    }
+    # media {
+    #   ...ProductMediaFragment
+    # }
     offers {
       ...LimitedTimeOfferFragment
     }
   }
 `;
 export type ProductFragmentResponse = Pick<Product, 'id' | 'name' | 'price' | 'description'> & {
-  media: ProductMediaFragmentResponse[];
+  // media: ProductMediaFragmentResponse[];
   offers: LimitedTimeOfferFragmentResponse[];
 };
 

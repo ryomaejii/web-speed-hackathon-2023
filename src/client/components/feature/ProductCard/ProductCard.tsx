@@ -13,7 +13,10 @@ type Props = {
 };
 
 export const ProductCard: FC<Props> = ({ product }) => {
-  const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
+  // const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
+  // TODO: URLのレスポンスを受け取るように修正
+  // NOTE: 一旦ダミーのURLを設定
+  const thumbnailFile = { filename: 'https://via.placeholder.com/300' };
 
   const { activeOffer } = useActiveOffer(product);
   const price = activeOffer?.price ?? product.price;

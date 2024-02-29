@@ -15,19 +15,39 @@ type Props = {
 
 export const ProductMediaListPreviewer: FC<Props> = ({ product }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const dummyPreviewFiles = [
+    {
+      filename: 'https://via.placeholder.com/300',
+      id: 0,
+    },
+    {
+      filename: 'https://via.placeholder.com/300',
+      id: 1,
+    },
+    {
+      filename: 'https://via.placeholder.com/300',
+      id: 2,
+    },
+  ];
 
-  if (product === undefined || product.media.length === 0) {
+  if (
+    product === undefined
+    /*
+    || product.media.length === 0
+    */
+  ) {
     return null;
   }
 
   return (
     <div className={styles.container()}>
       <AspectRatio ratioHeight={9} ratioWidth={16}>
-        <MediaItemPreviewer file={product.media[activeIndex].file} />
+        {/* <MediaItemPreviewer file={product.media[activeIndex].file} /> */}
+        <MediaItemPreviewer file={dummyPreviewFiles[0]} />
       </AspectRatio>
       <div className={styles.itemListWrapper()}>
         <ul className={styles.itemList()}>
-          {product.media.map((media, index) => {
+          {dummyPreviewFiles.map((media, index) => {
             const disabled = index === activeIndex;
 
             return (
@@ -40,7 +60,7 @@ export const ProductMediaListPreviewer: FC<Props> = ({ product }) => {
                     disabled={disabled}
                     onClick={() => setActiveIndex(index)}
                   >
-                    <MediaItem file={media.file} />
+                    <MediaItem file={media} />
                   </button>
                 </AspectRatio>
               </li>
