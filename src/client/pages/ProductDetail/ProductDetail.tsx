@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 
 import { Layout } from '../../components/application/Layout';
@@ -46,46 +45,41 @@ export const ProductDetail: FC = () => {
     });
   };
 
-  return (
-    <>
-      {product && (
-        <Helmet>
-          <title>{product.name}</title>
-        </Helmet>
-      )}
-      <Layout>
-        <div
-          style={{
-            margin: '0 auto',
-            maxWidth: '1024px',
-            padding: '0 16px',
-            width: '100%',
-          }}
-        >
-          <div className={styles.container()}>
-            <section className={styles.details()}>
-              <ProductMediaListPreviewer product={product} />
-              <div className={styles.overview()}>
-                <ProductOverview activeOffer={activeOffer} product={product} />
-              </div>
-              <div className={styles.purchase()}>
-                <ProductPurchaseSection
-                  amountInCart={amountInCart}
-                  isAuthUser={isAuthUser}
-                  onOpenSignInModal={() => handleOpenModal('SIGN_IN')}
-                  onUpdateCartItem={handleUpdateItem}
-                  product={product}
-                />
-              </div>
-            </section>
+  document.title = product?.name || '商品詳細';
 
-            <section className={styles.reviews()}>
-              <h2 className={styles.reviewsHeading()}>レビュー</h2>
-              <ReviewSection hasSignedIn={isAuthUser} onSubmitReview={handleSubmitReview} reviews={reviews} />
-            </section>
-          </div>
+  return (
+    <Layout>
+      <div
+        style={{
+          margin: '0 auto',
+          maxWidth: '1024px',
+          padding: '0 16px',
+          width: '100%',
+        }}
+      >
+        <div className={styles.container()}>
+          <section className={styles.details()}>
+            <ProductMediaListPreviewer product={product} />
+            <div className={styles.overview()}>
+              <ProductOverview activeOffer={activeOffer} product={product} />
+            </div>
+            <div className={styles.purchase()}>
+              <ProductPurchaseSection
+                amountInCart={amountInCart}
+                isAuthUser={isAuthUser}
+                onOpenSignInModal={() => handleOpenModal('SIGN_IN')}
+                onUpdateCartItem={handleUpdateItem}
+                product={product}
+              />
+            </div>
+          </section>
+
+          <section className={styles.reviews()}>
+            <h2 className={styles.reviewsHeading()}>レビュー</h2>
+            <ReviewSection hasSignedIn={isAuthUser} onSubmitReview={handleSubmitReview} reviews={reviews} />
+          </section>
         </div>
-      </Layout>
-    </>
+      </div>
+    </Layout>
   );
 };
