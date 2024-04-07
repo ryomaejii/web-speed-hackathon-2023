@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import type { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
-import { Anchor } from '../../foundation/Anchor';
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
 import { WidthRestriction } from '../../foundation/WidthRestriction';
 
@@ -21,7 +21,7 @@ export const ProductHeroImage: FC<Props> = ({ product, title }) => {
       {({ deviceType }) => {
         return (
           <WidthRestriction>
-            <Anchor to={`/product/${product?.id}`}>
+            <Link to={`/product/${product?.id}`}>
               <div className={styles.container()}>
                 <img className={styles.image()} src={thumbnailFile?.filename} />
 
@@ -44,7 +44,7 @@ export const ProductHeroImage: FC<Props> = ({ product, title }) => {
                   </p>
                 </div>
               </div>
-            </Anchor>
+            </Link>
           </WidthRestriction>
         );
       }}

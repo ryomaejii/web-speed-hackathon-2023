@@ -1,9 +1,9 @@
 import * as currencyFormatter from 'currency-formatter';
 import type { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import { useActiveOffer } from '../../../hooks/useActiveOffer';
-import { Anchor } from '../../foundation/Anchor';
 import { ProductOfferLabel } from '../../product/ProductOfferLabel';
 
 import * as styles from './ProductCard.styles';
@@ -19,7 +19,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
   const price = activeOffer?.price ?? product.price;
 
   return (
-    <Anchor to={`/product/${product.id}`}>
+    <Link to={`/product/${product.id}`}>
       <div className={styles.inner()}>
         {thumbnailFile ? (
           <div className={styles.image()}>
@@ -53,6 +53,6 @@ export const ProductCard: FC<Props> = ({ product }) => {
           </div>
         )}
       </div>
-    </Anchor>
+    </Link>
   );
 };

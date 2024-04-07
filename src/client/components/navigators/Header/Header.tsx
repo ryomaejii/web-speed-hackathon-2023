@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 import { useAuthUser } from '../../../hooks/useAuthUser';
 import { useOpenModal } from '../../../store/modal';
-import { Anchor } from '../../foundation/Anchor';
 
 import * as styles from './Header.styles';
 
@@ -13,15 +13,15 @@ export const Header: FC = () => {
 
   return (
     <header className={styles.container()}>
-      <Anchor to="/">
+      <Link to="/">
         <img alt="logo" height={32} src="/icons/logo.svg" width={205} />
-      </Anchor>
+      </Link>
       {isAuthUser ? (
-        <Anchor data-testid="navigate-order" to={'/order'}>
+        <Link data-testid="navigate-order" to={'/order'}>
           <div className={styles.orderLink()}>
             <FaShoppingCart color="#222222" size={20} />
           </div>
-        </Anchor>
+        </Link>
       ) : (
         <button
           className={styles.signInButton()}
