@@ -30,7 +30,15 @@ export const MediaItem: FC<Props> = ({ file }) => {
 
   return (
     <div className={styles.container()}>
-      <Image fill src={imageSrc} />
+      <Image
+        src={imageSrc}
+        style={{
+          aspectRatio: '1 / 1',
+          height: '100%',
+          objectFit: 'cover',
+          width: '100%',
+        }}
+      />
       {mediaType === 'video' && (
         <div className={styles.playIcon()}>
           <FaPlay color="#ffffff" size={16} />

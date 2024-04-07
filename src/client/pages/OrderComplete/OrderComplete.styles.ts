@@ -20,6 +20,8 @@ export const noticeHeading = () => css`
 export const noticeDescriptionWrapper = () => css`
   display: grid;
   height: 100%;
+  width: 100%;
+  aspect-ratio: 2 / 1;
   place-items: center;
 `;
 
