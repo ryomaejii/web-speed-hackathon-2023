@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 
 import { Layout } from '../../components/application/Layout';
-import { WidthRestriction } from '../../components/foundation/WidthRestriction';
 import { ProductMediaListPreviewer } from '../../components/product/ProductMediaListPreviewer';
 import { ProductOverview } from '../../components/product/ProductOverview';
 import { ProductPurchaseSection } from '../../components/product/ProductPurchaseSeciton';
@@ -55,7 +54,14 @@ export const ProductDetail: FC = () => {
         </Helmet>
       )}
       <Layout>
-        <WidthRestriction>
+        <div
+          style={{
+            margin: '0 auto',
+            maxWidth: '1024px',
+            padding: '0 16px',
+            width: '100%',
+          }}
+        >
           <div className={styles.container()}>
             <section className={styles.details()}>
               <ProductMediaListPreviewer product={product} />
@@ -78,7 +84,7 @@ export const ProductDetail: FC = () => {
               <ReviewSection hasSignedIn={isAuthUser} onSubmitReview={handleSubmitReview} reviews={reviews} />
             </section>
           </div>
-        </WidthRestriction>
+        </div>
       </Layout>
     </>
   );

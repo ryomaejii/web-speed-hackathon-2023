@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 
 import { Layout } from '../../components/application/Layout';
-import { WidthRestriction } from '../../components/foundation/WidthRestriction';
 const OrderForm = lazy(() => import('../../components/order/OrderForm'));
 import { OrderPreview } from '../../components/order/OrderPreview';
 import { useAuthUser } from '../../hooks/useAuthUser';
@@ -89,7 +88,16 @@ export const Order: FC = () => {
         <title>購入手続き</title>
       </Helmet>
       <Layout>
-        <WidthRestriction>{renderContents()}</WidthRestriction>
+        <div
+          style={{
+            margin: '0 auto',
+            maxWidth: '1024px',
+            padding: '0 16px',
+            width: '100%',
+          }}
+        >
+          {renderContents()}
+        </div>
       </Layout>
     </>
   );

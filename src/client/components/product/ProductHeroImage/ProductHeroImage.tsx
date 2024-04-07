@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
-import { WidthRestriction } from '../../foundation/WidthRestriction';
 
 import * as styles from './ProductHeroImage.styles';
 
@@ -20,7 +19,14 @@ export const ProductHeroImage: FC<Props> = ({ product, title }) => {
     <GetDeviceType>
       {({ deviceType }) => {
         return (
-          <WidthRestriction>
+          <div
+            style={{
+              margin: '0 auto',
+              maxWidth: '1024px',
+              padding: '0 16px',
+              width: '100%',
+            }}
+          >
             <Link to={`/product/${product?.id}`}>
               <div className={styles.container()}>
                 <img className={styles.image()} src={thumbnailFile?.filename} />
@@ -45,7 +51,7 @@ export const ProductHeroImage: FC<Props> = ({ product, title }) => {
                 </div>
               </div>
             </Link>
-          </WidthRestriction>
+          </div>
         );
       }}
     </GetDeviceType>

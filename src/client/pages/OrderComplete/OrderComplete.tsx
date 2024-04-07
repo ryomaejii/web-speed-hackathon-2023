@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { Layout } from '../../components/application/Layout';
 import { DeviceType, GetDeviceType } from '../../components/foundation/GetDeviceType';
 import { PrimaryAnchor } from '../../components/foundation/PrimaryAnchor';
-import { WidthRestriction } from '../../components/foundation/WidthRestriction';
 import { ProductHeroImage } from '../../components/product/ProductHeroImage';
 import { useAuthUser } from '../../hooks/useAuthUser';
 import { useRecommendation } from '../../hooks/useRecommendation';
@@ -43,7 +42,14 @@ export const OrderComplete: FC = () => {
       <Layout>
         <GetDeviceType>
           {({ deviceType }) => (
-            <WidthRestriction>
+            <div
+              style={{
+                margin: '0 auto',
+                maxWidth: '1024px',
+                padding: '0 16px',
+                width: '100%',
+              }}
+            >
               <div className={styles.container()}>
                 <div className={styles.notice()}>
                   <h2 className={styles.noticeHeading()}>購入が完了しました</h2>
@@ -70,7 +76,7 @@ export const OrderComplete: FC = () => {
                   </PrimaryAnchor>
                 </div>
               </div>
-            </WidthRestriction>
+            </div>
           )}
         </GetDeviceType>
       </Layout>
